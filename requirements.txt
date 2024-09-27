@@ -3,4 +3,4 @@ langchain-community
 langchain-core
 langchain-ollama
 streamlit
-watchdog
+watchdog # optional
