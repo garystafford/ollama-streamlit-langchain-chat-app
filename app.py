@@ -68,7 +68,7 @@ def create_sidebar():
 
         st.markdown("---")
         st.text(
-            f"""
+            f"""Stats:
 - model: {st.session_state.model}
 - seed: {st.session_state.seed}
 - temperature: {st.session_state.temperature}
