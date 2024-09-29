@@ -1,5 +1,10 @@
 # Ollama Streamlit LangChain Chat App Demo
 
+Code from the blog post, [Local Inference with Meta's Latest Llama 3.2 LLMs Using Ollama, LangChain, and Streamlit
+Meta's latest Llama 3.2 1B and 3B models are available from Ollama: Learn how to install and interact with these models locally using Streamlit and LangChain](https://garystafford.medium.com/interacting-with-metas-latest-llama-3-2-models-using-ollama-langchain-and-streamlit-71f898b184d4).
+
+![Preview](./preview.png)
+
 ## Commands
 
 Optional on Mac, works with watchdog:
