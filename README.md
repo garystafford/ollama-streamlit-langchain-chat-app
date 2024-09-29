@@ -77,7 +77,7 @@ There’s not a liberal America and a conservative America; there’s the United
 ```
 
 ```text
-Describe the statement’s sentiment.
+Describe the speech excerpt’s sentiment.
 ```
 
 ## Three Little Pigs Example
