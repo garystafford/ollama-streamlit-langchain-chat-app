@@ -9,8 +9,7 @@
 import logging
 
 import streamlit as st
-from langchain_community.chat_message_histories import \
-    StreamlitChatMessageHistory
+from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_ollama import ChatOllama
