@@ -66,7 +66,7 @@ What is their estimated net worth?
 ## Barack Obama Speech Example
 
 ```text
-Improve the grammar of the following statement. Explain what has changed and why:
+Improve the grammar of the following speech excerpt. Explain what has changed and why:
 
 There’s not a liberal America and a conservative America; there’s the United States of America. There’s not a Black America and white America and Latino America and Asian America; there’s the United States of America. We are one people, all of us pledging allegiance to the stars and stripes, all of us defending the United States of America. In the end, that’s what this election is about. Do we participate in a politics of cynicism, or do we participate in a politics of hope?
 ```
@@ -78,7 +78,7 @@ Describe the statement’s sentiment.
 ## Three Little Pigs Example
 
 ```text
-Analyze the following children's story. Identify the main characters and character types. Output in JSON format. Explain why you have chosen the character types.
+Analyze the following children's story. Identify the main characters and character types. Explain why you have chosen the character types. Output in JSON format.
 
 ### FORMAT ###
 {

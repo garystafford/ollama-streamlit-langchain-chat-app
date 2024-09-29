@@ -7,6 +7,7 @@
 # https://python.langchain.com/docs/integrations/callbacks/streamlit/
 
 import logging
+from typing import Dict, Any
 
 import streamlit as st
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
@@ -14,22 +15,21 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_ollama import ChatOllama
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
-
 # Constants
 PAGE_TITLE = "Llama 3.2 Chat"
 PAGE_ICON = "🦙"
 SYSTEM_PROMPT = "You are an AI chatbot having a conversation with a human."
 DEFAULT_MODEL = "llama3.2:latest"
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
-# Helper functions
-def initialize_session_state():
-    defaults = {
+
+def initialize_session_state() -> None:
+    defaults: Dict[str, Any] = {
         "model": DEFAULT_MODEL,
         "input_tokens": 0,
         "output_tokens": 0,
@@ -45,10 +45,9 @@ def initialize_session_state():
             st.session_state[key] = value
 
 
-def create_sidebar():
+def create_sidebar() -> None:
     with st.sidebar:
         st.header("Inference Settings")
-
         st.session_state.model = st.selectbox(
             "Model", ["llama3.2:1b", "llama3.2:latest"], index=1
         )
@@ -77,7 +76,7 @@ def create_sidebar():
         )
 
 
-def create_chat_model():
+def create_chat_model() -> ChatOllama:
     return ChatOllama(
         model=st.session_state.model,
         seed=st.session_state.seed,
@@ -87,7 +86,7 @@ def create_chat_model():
     )
 
 
-def create_chat_chain(chat_model):
+def create_chat_chain(chat_model: ChatOllama):
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", SYSTEM_PROMPT),
@@ -98,7 +97,7 @@ def create_chat_chain(chat_model):
     return prompt | chat_model
 
 
-def update_sidebar_stats(response):
+def update_sidebar_stats(response: Any) -> None:
     total_duration = response.response_metadata["total_duration"] / 1e9
     st.session_state.total_duration = f"{total_duration:.2f} s"
     st.session_state.input_tokens = response.usage_metadata["input_tokens"]
@@ -122,24 +121,16 @@ def update_sidebar_stats(response):
         )
 
 
-def main():
+def main() -> None:
     st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON, layout="wide")
-    custom_css = """
-    <style>
-            MainMenu {
-                visibility: hidden;
-            }
-            footer {
-                visibility: hidden;
-            }
-            header {
-                visibility: hidden;
-            }
-    </style>
-    """
-
     st.markdown(
-        custom_css,
+        """
+        <style>
+            MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+        </style>
+        """,
         unsafe_allow_html=True,
     )
 
