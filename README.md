@@ -82,6 +82,8 @@ Describe the statement’s sentiment.
 
 ## Three Little Pigs Example
 
+Three Little Pigs story is from [ririro.com](https://ririro.com/the-three-little-pigs).
+
 ```text
 Analyze the following children's story. Identify the main characters and character types. Explain why you have chosen the character types. Output in JSON format.
 
