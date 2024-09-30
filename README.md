@@ -187,10 +187,6 @@ Sample JSON output from inference:
 
 ## Prompt Example 4: Multilingual Geography using System Prompt
 
-```text
-Tell me what languages you are proficient in.
-```
-
 System Role Prompt:
 
 ```text
