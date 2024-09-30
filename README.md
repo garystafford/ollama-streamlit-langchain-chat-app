@@ -1,9 +1,15 @@
 # Ollama Streamlit LangChain Chat App Demo
 
-Code from the blog post, [Local Inference with Meta's Latest Llama 3.2 LLMs Using Ollama, LangChain, and Streamlit
-Meta's latest Llama 3.2 1B and 3B models are available from Ollama: Learn how to install and interact with these models locally using Streamlit and LangChain](https://garystafford.medium.com/interacting-with-metas-latest-llama-3-2-models-using-ollama-langchain-and-streamlit-71f898b184d4).
+Code from the blog post, [Local Inference with Meta's Latest Llama 3.2 LLMs Using Ollama, LangChain, and Streamlit](https://garystafford.medium.com/interacting-with-metas-latest-llama-3-2-models-using-ollama-langchain-and-streamlit-71f898b184d4): Meta's latest Llama 3.2 1B and 3B models are available from Ollama. Learn how to install and interact with these models locally using Streamlit and LangChain. Learn to use the newest Meta Llama 3.2 models to supercharge ⚡️ your next generative AI project, now available locally using Ollama. The post will show you how to harness the power of these lightweight state-of-the-art LLMs in your local environment 💻. Discover how to:
+
+- Install the Meta Llama 3.2 1B and 3B LLMs for free 🤑, with Ollama 🛠️
+- Leverage Streamlit to build a sophisticated chat application quickly 💬
+- Utilize the latest version of LangChain to connect to Ollama for model inference 🔗
+- Learn to build on-device generative AI applications with strong privacy where data never leaves the device and doesn’t require an Internet connection 🔐
 
 ![Preview](./preview.png)
+
+In addition to the prompt, the application accepts inference parameters on the sidebar, including model, seed, temperature, top_p, and maximum response tokens (aka num_predict). Play around with different parameters and compare the results. The application also calculates metrics, including input tokens, output tokens, total tokens, total inference duration in seconds, and response tokens/second.
 
 ## Commands
 
@@ -177,23 +183,13 @@ Sample JSON output from inference:
 }
 ```
 
-## Data Extraction Example
+## Data Extraction Coding Example
 
 ```text
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
-Do not repeat any values. The data is in a file called 'customers-100.csv'. Below is a sample of that data.
+Do not repeat any values. The data is in a file called 'data/customers-100000.csv'. Below is a sample of that CSV file's header row:
 
 Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Email,Subscription Date,Website
-1,DD37Cf93aecA6Dc,Sheryl,Baxter,Rasmussen Group,East Leonard,Chile,229.077.5154,397.884.0519x718,zunigavanessa@smith.info,2020-08-24,http://www.stephenson.com/
-2,1Ef7b82A4CAAD10,Preston,Lozano,Vega-Gentry,East Jimmychester,Djibouti,5153435776,686-620-1820x944,vmata@colon.com,2021-04-23,http://www.hobbs.com/
-3,6F94879bDAfE5a6,Roy,Berry,Murillo-Perry,Isabelborough,Antigua and Barbuda,+1-539-402-0259,(496)978-3969x58947,beckycarr@hogan.com,2020-03-25,http://www.lawrence.com/
-4,5Cef8BFA16c5e3c,Linda,Olsen,"Dominguez, Mcmillan and Donovan",Bensonview,Dominican Republic,001-808-617-6467x12895,+1-813-324-8756,stanleyblackwell@benson.org,2020-06-02,http://www.good-lyons.com/
-5,053d585Ab6b3159,Joanna,Bender,"Martin, Lang and Andrade",West Priscilla,Slovakia (Slovak Republic),001-234-203-0635x76146,001-199-446-3860x3486,colinalvarado@miles.net,2021-04-17,https://goodwin-ingram.com/
-6,2d08FB17EE273F4,Aimee,Downs,Steele Group,Chavezborough,Bosnia and Herzegovina,(283)437-3886x88321,999-728-1637,louis27@gilbert.com,2020-02-25,http://www.berger.net/
-7,EA4d384DfDbBf77,Darren,Peck,"Lester, Woodard and Mitchell",Lake Ana,Pitcairn Islands,(496)452-6181x3291,+1-247-266-0963x4995,tgates@cantrell.com,2021-08-24,https://www.le.com/
-8,0e04AFde9f225dE,Brett,Mullen,"Sanford, Davenport and Giles",Kimport,Bulgaria,001-583-352-7197x297,001-333-145-0369,asnow@colon.com,2021-04-12,https://hammond-ramsey.com/
-9,C2dE4dEEc489ae0,Sheryl,Meyers,Browning-Simon,Robersonstad,Cyprus,854-138-4911x5772,+1-448-910-2276x729,mariokhan@ryan-pope.org,2020-01-13,https://www.bullock.net/
-10,8C2811a503C7c5a,Michelle,Gallagher,Beck-Hendrix,Elaineberg,Timor-Leste,739.218.2516x459,001-054-401-0347x617,mdyer@escobar.net,2021-11-08,https://arias.com/
 ```
 
 Sample Python script from inference:
@@ -222,4 +218,32 @@ Sample output from Python script:
 
 ```text
 ['Aimee', 'Alejandro', 'Alexandria', 'Alison', 'Anita', 'Brady', 'Brett', 'Brittany', 'Bruce', 'Bryan', 'Candice', 'Carl', 'Caroline', 'Cassidy', 'Chad', 'Chloe', 'Clarence', 'Clifford', 'Colleen', 'Collin', 'Corey', 'Dakota', 'Danny', 'Darrell', 'Darren', 'Debra', 'Duane', 'Eddie', 'Eileen', 'Emma', 'Faith', 'Fernando', 'Fred', 'Frederick', 'Gabriel', 'Geoffrey', 'Gerald', 'Gloria', 'Greg', 'Hunter', 'Jack', 'Janet', 'Jenna', 'Joanna', 'Joanne', 'Jordan', 'Kaitlyn', 'Karl', 'Kathleen', 'Kathy', 'Kelli', 'Kent', 'Kiara', 'Kristine', 'Latoya', 'Laurie', 'Leslie', 'Linda', 'Lori', 'Luis', 'Lynn', 'Makayla', 'Marcus', 'Maxwell', 'Michelle', 'Miranda', 'Natalie', 'Nicholas', 'Nina', 'Patricia', 'Phyllis', 'Preston', 'Ralph', 'Regina', 'Rhonda', 'Richard', 'Riley', 'Robin', 'Roy', 'Samuel', 'Shane', 'Shelley', 'Sherry', 'Sheryl', 'Stacie', 'Stefanie', 'Tammie', 'Tom', 'Tracey', 'Vernon', 'Virginia', 'Wayne', 'Yvonne']
+```
+
+## Data Extraction Coding Example using System Prompt
+
+### First Prompt
+
+System:
+
+```text
+You are an expert programmer who writes Python 3 code in a Pythonic style. Pythonic refers to an approach to Python programming that embraces the idioms and practices considered natural or idiomatic in the Python programming language. It embodies the philosophy and best practices that lead to clear, concise, and readable code. Pythonic code is also performant, resilient, efficiently catches specific exceptions, and uses the latest Python 3 features.
+
+Important: You should always optimize code for performance over the use of convenience libraries and use Python functions to separate functional concerns, including a main() function.
+```
+
+User:
+
+```text
+Write a Python 3 script to extract all values from the 'First Name' column of a CSV file as a Python list of dictionary objects containing the values as strings ('names'), sorted in ascending order, along with the count of each unique value ('count'). Do not repeat any values. Require a command-line argument for the 'path' to CSV file. Output the results as Name: {name}, Count: {count}, sorted in descending order by counts and secondarily, in ascending order by name. Explain your decisions. Below is a sample of that CSV file's header row:
+
+Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Email,Subscription Date,Website
+```
+
+### Second Prompt
+
+User:
+
+```text
+Refactor the code to Pythonic using PEP8 while also optimizing for performance. Keep all my previous instructions in mind. Explain your decisions.
 ```

@@ -18,7 +18,7 @@ from langchain_ollama import ChatOllama
 # Constants
 PAGE_TITLE = "Llama 3.2 Chat"
 PAGE_ICON = "🦙"
-SYSTEM_PROMPT = "You are an AI chatbot having a conversation with a human."
+SYSTEM_PROMPT = "You are a friendly AI chatbot having a conversation with a human."
 DEFAULT_MODEL = "llama3.2:latest"
 
 # Configure logging
@@ -35,7 +35,7 @@ def initialize_session_state() -> None:
         "output_tokens": 0,
         "total_tokens": 0,
         "total_duration": 0,
-        "num_predict": 512,
+        "num_predict": 2048,
         "seed": 1,
         "temperature": 0.5,
         "top_p": 0.9,
@@ -48,20 +48,49 @@ def initialize_session_state() -> None:
 def create_sidebar() -> None:
     with st.sidebar:
         st.header("Inference Settings")
+        st.session_state.system_prompt = st.text_area(
+            label="System",
+            value=SYSTEM_PROMPT,
+            help="Sets the context in which to interact with the AI model. It typically includes rules, guidelines, or necessary information that help the model respond effectively.",
+        )
+
         st.session_state.model = st.selectbox(
-            "Model", ["llama3.2:1b", "llama3.2:latest"], index=1
+            "Model",
+            ["llama3.2:1b", "llama3.2:latest"],
+            index=1,
+            help="Select the model to use.",
         )
         st.session_state.seed = st.slider(
-            "Seed", min_value=1, max_value=9007199254740991, value=1, step=1
+            "Seed",
+            min_value=1,
+            max_value=9007199254740991,
+            value=round(9007199254740991 / 2),
+            step=1,
+            help="Controls the randomness of how the model selects the next tokens during text generation.",
         )
         st.session_state.temperature = st.slider(
-            "Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.01
+            "Temperature",
+            min_value=0.0,
+            max_value=1.0,
+            value=0.5,
+            step=0.01,
+            help="Sets an LLM's entropy. Low temperatures render outputs that are predictable and repetitive. Conversely, high temperatures encourage LLMs to produce more random, creative responses.",
         )
         st.session_state.top_p = st.slider(
-            "Top P", min_value=0.0, max_value=1.0, value=0.90, step=0.01
+            "Top P",
+            min_value=0.0,
+            max_value=1.0,
+            value=0.90,
+            step=0.01,
+            help="Sets the probability threshold for the nucleus sampling algorithm. It controls the diversity of the model's responses.",
         )
         st.session_state.num_predict = st.slider(
-            "Response Tokens", min_value=0, max_value=8192, value=512, step=8
+            "Response Tokens",
+            min_value=0,
+            max_value=8192,
+            value=2048,
+            step=16,
+            help="Sets the maximum number of tokens the model can generate in response to a prompt.",
         )
 
         st.markdown("---")
@@ -89,7 +118,7 @@ def create_chat_model() -> ChatOllama:
 def create_chat_chain(chat_model: ChatOllama):
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", SYSTEM_PROMPT),
+            ("system", st.session_state.system_prompt),
             MessagesPlaceholder(variable_name="chat_history"),
             ("human", "{input}"),
         ]
@@ -136,6 +165,8 @@ def main() -> None:
 
     st.title(f"{PAGE_TITLE} {PAGE_ICON}")
 
+    st.markdown("##### Chat")
+
     initialize_session_state()
     create_sidebar()
 
@@ -162,8 +193,8 @@ def main() -> None:
         with st.spinner("Thinking..."):
             config = {"configurable": {"session_id": "any"}}
             response = chain_with_history.invoke({"input": prompt}, config)
+            logger.info({"input": prompt}, config)
             st.chat_message("ai").write(response.content)
-
             logger.info(response)
             update_sidebar_stats(response)
 
