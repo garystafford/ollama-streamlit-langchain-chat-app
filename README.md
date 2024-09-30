@@ -62,6 +62,8 @@ deactivate
 
 ## Prompt Example 1: Meta Conversation
 
+temperature: 0.50
+
 ```text
 When was Meta founded?
 ```
@@ -75,6 +77,8 @@ What is their estimated net worth?
 ```
 
 ## Prompt Example 2: Speech Excerpt
+
+temperature: 0.50
 
 ```text
 Improve the grammar of the following speech excerpt. Explain what has changed and why:
@@ -90,7 +94,7 @@ Describe the speech excerpt’s sentiment.
 
 Three Little Pigs story is from [ririro.com](https://ririro.com/the-three-little-pigs).
 
-temperature: 0.10
+temperature: 0.20
 
 ```text
 Analyze the following children's story. Identify all the characters and their corresponding character types from the list below. Explain why you have chosen a particular character type. Output the characters and their corresponding character types in JSON format, which adheres to the following structure:
@@ -190,44 +194,46 @@ Sample JSON output from inference:
 
 ```json
 {
-    "characters": [
-        {
-            "character": "Old Mother Pig",
-            "character_type": "Protagonist"
-        },
-        {
-            "character": "First Little Pig",
-            "character_type": "Deuteragonist"
-        },
-        {
-            "character": "Second Little Pig",
-            "character_type": "Deuteragonist"
-        },
-        {
-            "character": "Third Little Pig",
-            "character_type": "Protagonist"
-        },
-        {
-            "character": "Man with Straw",
-            "character_type": "Henchmen"
-        },
-        {
-            "character": "Man with Sticks",
-            "character_type": "Henchmen"
-        },
-        {
-            "character": "Man with Bricks",
-            "character_type": "Henchmen"
-        },
-        {
-            "character": "Big Bad Wolf",
-            "character_type": "Antagonist"
-        }
-    ]
+  "characters": [
+    {
+      "character": "Old Mother Pig",
+      "character_type": "Protagonist"
+    },
+    {
+      "character": "First Little Pig",
+      "character_type": "Deuteragonist"
+    },
+    {
+      "character": "Second Little Pig",
+      "character_type": "Deuteragonist"
+    },
+    {
+      "character": "Third Little Pig",
+      "character_type": "Protagonist"
+    },
+    {
+      "character": "Man with Straw",
+      "character_type": "Henchmen"
+    },
+    {
+      "character": "Man with Sticks",
+      "character_type": "Henchmen"
+    },
+    {
+      "character": "Man with Bricks",
+      "character_type": "Henchmen"
+    },
+    {
+      "character": "Big Bad Wolf",
+      "character_type": "Antagonist"
+    }
+  ]
 }
 ```
 
 ## Prompt Example 4: Multilingual Geography using System Prompt
+
+temperature: 0.50
 
 System Role Prompt:
 
@@ -266,6 +272,8 @@ C'est une ville magnifique ! Trois monuments célèbres à Paris sont : la Tour 
 ```
 
 ## Example 5a: Code Generation
+
+temperature: 0.50
 
 ```text
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
@@ -306,6 +314,8 @@ Sample output from Python script:
 
 ## Example 5b: Code Generation using System Prompt
 
+temperature: 0.50
+
 ### First Prompt
 
 System Role Prompt:
@@ -334,7 +344,7 @@ Refactor the code to adhere to PEP 8 guidelines and optimize it for performance,
 
 ### Sample Output
 
-Command: `python3 ./refactored_code.py data/customers-100000.csv`
+Command to run the generated and refactored Python script: `python3 ./refactored_code.py data/customers-100000.csv`
 
 Sample output from the generated and refactored Python script:
 
