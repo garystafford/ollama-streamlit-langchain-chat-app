@@ -7,7 +7,7 @@ Code from the blog post, [Local Inference with Meta's Latest Llama 3.2 LLMs Usin
 - Utilize the latest version of LangChain to connect to Ollama for model inference 🔗
 - Learn to build on-device generative AI applications with strong privacy where data never leaves the device and doesn’t require an Internet connection 🔐
 
-![Preview](./previews/preview_v2.png)
+![Preview](./previews/preview_v3.png)
 
 In addition to the prompt, the application accepts inference parameters on the sidebar, including system role prompt, model, seed, temperature, top_p, and maximum response tokens (aka num_predict). Play around with different parameters and compare the results. The application also calculates metrics, including input tokens, output tokens, total tokens, total inference duration in seconds, and response tokens/second.
 
