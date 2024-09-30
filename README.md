@@ -162,6 +162,8 @@ And after that? The big bad wolf never came back again, he was too scared of the
 And the pigs? They lived happily ever after, together in the house made of bricks.
 ```
 
+### Output
+
 Sample JSON output from inference:
 
 ```json
@@ -189,7 +191,7 @@ Sample JSON output from inference:
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
 Do not repeat any values. The data is in a file called 'data/customers-100000.csv'. Below is a sample of that CSV file's header row:
 
-Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Email,Subscription Date,Website
+Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Email,Subscription Date,Website###
 ```
 
 Sample Python script from inference:
@@ -213,6 +215,8 @@ def extract_first_names(csv_file):
 first_names = extract_first_names('customers-100.csv')
 print(first_names)
 ```
+
+### Sample Output
 
 Sample output from Python script:
 
@@ -246,4 +250,25 @@ User:
 
 ```text
 Refactor the code to Pythonic using PEP8 while also optimizing for performance. Keep all my previous instructions in mind. Explain your decisions.
+```
+
+### Sample Output
+
+Command: `python3 ./refactored_code.py data/customers-100000.csv`
+
+Sample output from the generated and refactored Python script:
+
+```text
+Name: Joan, Count: 183
+Name: Audrey, Count: 182
+Name: Bridget, Count: 182
+Name: Anne, Count: 180
+Name: Melinda, Count: 177
+...
+Name: Jay, Count: 115
+Name: George, Count: 114
+Name: Jessica, Count: 114
+Name: Tanner, Count: 114
+
+0.23s user 0.01s system 94% cpu 0.261 total
 ```

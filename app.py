@@ -2,9 +2,6 @@
 # Streamlit app for chatting with Meta Llama 3.2 using Ollama and LangChain
 # Author: Gary A. Stafford
 # Date: 2024-09-26
-# References:
-# https://python.langchain.com/v0.2/docs/integrations/memory/streamlit_chat_message_history/
-# https://python.langchain.com/docs/integrations/callbacks/streamlit/
 
 import logging
 from typing import Dict, Any
