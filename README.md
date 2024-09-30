@@ -211,7 +211,7 @@ Sample output in French:
 C'est une ville magnifique ! Trois monuments célèbres à Paris sont : la Tour Eiffel, le Louvre et Notre-Dame de Paris.
 ```
 
-## Example 5a: Data Extraction Coding
+## Example 5a: Code Generation
 
 ```text
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
@@ -250,7 +250,7 @@ Sample output from Python script:
 ['Aimee', 'Alejandro', 'Alexandria', 'Alison', 'Anita', 'Brady', 'Brett', 'Brittany', 'Bruce', 'Bryan', 'Candice', 'Carl', 'Caroline', 'Cassidy', 'Chad', 'Chloe', 'Clarence', 'Clifford', 'Colleen', 'Collin', 'Corey', 'Dakota', 'Danny', 'Darrell', 'Darren', 'Debra', 'Duane', 'Eddie', 'Eileen', 'Emma', 'Faith', 'Fernando', 'Fred', 'Frederick', 'Gabriel', 'Geoffrey', 'Gerald', 'Gloria', 'Greg', 'Hunter', 'Jack', 'Janet', 'Jenna', 'Joanna', 'Joanne', 'Jordan', 'Kaitlyn', 'Karl', 'Kathleen', 'Kathy', 'Kelli', 'Kent', 'Kiara', 'Kristine', 'Latoya', 'Laurie', 'Leslie', 'Linda', 'Lori', 'Luis', 'Lynn', 'Makayla', 'Marcus', 'Maxwell', 'Michelle', 'Miranda', 'Natalie', 'Nicholas', 'Nina', 'Patricia', 'Phyllis', 'Preston', 'Ralph', 'Regina', 'Rhonda', 'Richard', 'Riley', 'Robin', 'Roy', 'Samuel', 'Shane', 'Shelley', 'Sherry', 'Sheryl', 'Stacie', 'Stefanie', 'Tammie', 'Tom', 'Tracey', 'Vernon', 'Virginia', 'Wayne', 'Yvonne']
 ```
 
-## Example 5b: Data Extraction Coding using System Prompt
+## Example 5b: Code Generation using System Prompt
 
 ### First Prompt
 
