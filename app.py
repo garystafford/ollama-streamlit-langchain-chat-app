@@ -15,7 +15,7 @@ from langchain_ollama import ChatOllama
 # Constants
 PAGE_TITLE = "Llama 3.2 Chat"
 PAGE_ICON = "🦙"
-SYSTEM_PROMPT = "You are a friendly AI chatbot having a conversation with a human."
+SYSTEM_PROMPT = "You are a friendly and informative AI chatbot conversing with a human."
 DEFAULT_MODEL = "llama3.2:latest"
 
 # Configure logging

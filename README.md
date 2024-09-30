@@ -90,33 +90,47 @@ Describe the speech excerpt’s sentiment.
 
 Three Little Pigs story is from [ririro.com](https://ririro.com/the-three-little-pigs).
 
+temperature: 0.10
+
 ```text
-Analyze the following children's story. Identify the main characters and character types. Explain why you have chosen the character types. Output in JSON format.
+Analyze the following children's story. Identify all the characters and their corresponding character types from the list below. Explain why you have chosen a particular character type. Output the characters and their corresponding character types in JSON format, which adheres to the following structure:
 
 ### FORMAT ###
 {
     "characters": [
         {
             "character": "character A",
-            "character_type": "antagonist"
+            "character_type": "type 1"
         },
         {
             "character": "character B",
-            "character_type": "protagonist"
+            "character_type": "type 2"
         },
         {
             "character": "character C",
-            "character_type": "deuteragonist"
+            "character_type": "type 3"
         }
     ]
 }
+
+### CHARACTER TYPES ###
+- Antagonist
+- Antihero
+- Confidant
+- Contagonist
+- Deuteragonist
+- Foil
+- Guide
+- Henchmen
+- Love Interest
+- Protagonist
+- Temptress
 
 ### STORY ###
 Once upon a time, an old mother pig had three piglets. Unfortunately, she didn’t have enough food to keep them, so she sent them out to seek their own luck.
 
 When the first pig went out, he met a man with a bundle of straw. The pig said, “Sir, please give me the straw so I can build a house.” The man gave him the straw, and the pig built a house out of straw.
 
-The Three Little Pigs Illustration asking for straw
 Soon after, a big bad wolf passed by. He knocked on the door and said, “Hey, little pig, let me in.”
 
 The pig replied, “No, no, not by the hair on my chinny chin chin.”
@@ -135,12 +149,10 @@ Then the big bad wolf came by the house made of sticks and said, “Hey, little 
 
 “Then I’ll huff and I’ll puff and I’ll blow your house in,” said the wolf. And so he did. He huffed and he puffed, and he blew the door down. The two pigs quickly ran away to their other brother.
 
-The Three Little Pigs Illustration where the wolf is blowing the wooden house to pieces.
 The third pig had met a man with a load of bricks. The pig said, “Please, sir, give me those bricks so I can build a house.” The man gave him the bricks, and the pig built a house out of bricks.
 
 He was sitting in his house when he heard a knock on the door. It were his brothers! “The wolf has blown our houses down! Please can we stay here?”
 
-The Three Little Pigs Illustration where the pigs run to the brick house of their brother
 “Of course, my house is made of brick, it’s safe for sure!” the brother said. “But the wolf will surely come around here. Let’s make a plan to make sure he never bothers us again.” So the three little pigs came up with a plan. And just like the pig predicted, the wolf came to his house…
 
 The big bad wolf came to the house made of bricks and said, “Hey, little pig, let me in.”
@@ -162,26 +174,56 @@ And after that? The big bad wolf never came back again, he was too scared of the
 And the pigs? They lived happily ever after, together in the house made of bricks.
 ```
 
+Follow-up User Prompts:
+
+```text
+What about the three men in the story?
+```
+
+```text
+Format the JSON with markdown tags for code.
+```
+
 ### Output
 
 Sample JSON output from inference:
 
 ```json
 {
-  "characters": [
-    {
-      "character": "The Big Bad Wolf",
-      "character_type": "antagonist"
-    },
-    {
-      "character": "The Three Little Pigs (Pig 1)",
-      "character_type": "deuteragonist"
-    },
-    {
-      "character": "The Two Little Pigs (Pig 2 and Pig 3)",
-      "character_type": "protagonists"
-    }
-  ]
+    "characters": [
+        {
+            "character": "Old Mother Pig",
+            "character_type": "Protagonist"
+        },
+        {
+            "character": "First Little Pig",
+            "character_type": "Deuteragonist"
+        },
+        {
+            "character": "Second Little Pig",
+            "character_type": "Deuteragonist"
+        },
+        {
+            "character": "Third Little Pig",
+            "character_type": "Protagonist"
+        },
+        {
+            "character": "Man with Straw",
+            "character_type": "Henchmen"
+        },
+        {
+            "character": "Man with Sticks",
+            "character_type": "Henchmen"
+        },
+        {
+            "character": "Man with Bricks",
+            "character_type": "Henchmen"
+        },
+        {
+            "character": "Big Bad Wolf",
+            "character_type": "Antagonist"
+        }
+    ]
 }
 ```
 
@@ -190,7 +232,7 @@ Sample JSON output from inference:
 System Role Prompt:
 
 ```text
-You are an expert in geography and linguistics. You only respond in the dominant native language of the country or region to which the instruction or question is related.
+You are an expert in geography and linguistics. Based on the geographic context of the user’s prompt, you respond in the dominant native language of the country or region.
 ```
 
 User Role Prompt:
@@ -203,12 +245,24 @@ What is the tallest peak in Austria?
 What are three famous landmarks in Paris?
 ```
 
+```text
+What is the largest temple in Thailand?
+```
+
 ### Sample Output
 
-Sample output in French:
+Sample output in German, French, and Thai:
+
+```text
+Der höchste Berg Österreichs ist der Großglockner, mit einer Höhe von 3.798 Metern über dem Meeresspiegel.
+```
 
 ```text
 C'est une ville magnifique ! Trois monuments célèbres à Paris sont : la Tour Eiffel, le Louvre et Notre-Dame de Paris.
+```
+
+```text
+วัดพระธรรมกาย (Wat Phra That Thong) ในจังหวัดนครสวรรค์ ไม่ใช่เท่านั้น แต่ยังมีหลายวัดที่ใหญ่ที่สุดในประเทศไทย เช่น วัดพระแก้ว ในกรุงเทพมหานคร วัดพระสมานบุรี ในกรุงเทพมหานคร และวัดท่าหลวง ในจังหวัดธนบุรี
 ```
 
 ## Example 5a: Code Generation
@@ -275,7 +329,7 @@ Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Emai
 User Role Prompt:
 
 ```text
-Refactor the code to Pythonic using PEP 8 while also optimizing for performance. Keep all my previous instructions in mind. Explain your decisions.
+Refactor the code to adhere to PEP 8 guidelines and optimize it for performance, taking into account any existing constraints or requirements.
 ```
 
 ### Sample Output
