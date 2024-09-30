@@ -97,7 +97,7 @@ Three Little Pigs story is from [ririro.com](https://ririro.com/the-three-little
 temperature: 0.20
 
 ```text
-Analyze the following children's story. Identify all the characters and their corresponding character types from the list below. Explain why you have chosen a particular character type. Output the characters and their corresponding character types in JSON format, which adheres to the following structure:
+Analyze the following children’s story. Identify all the characters and their corresponding character types from the list below. Explain why you have chosen a particular character type. Output the characters and their corresponding character types in JSON format, which adheres to the following structure:
 
 ### FORMAT ###
 {
@@ -279,7 +279,7 @@ temperature: 0.50
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
 Do not repeat any values. The data is in a file called 'data/customers-100000.csv'. Below is a sample of that CSV file's header row:
 
-Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Email,Subscription Date,Website###
+Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Email,Subscription Date,Website
 ```
 
 Sample Python script from inference:
