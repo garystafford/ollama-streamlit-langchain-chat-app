@@ -60,7 +60,7 @@ Deactivate virtual environment when finished:
 deactivate
 ```
 
-## Meta Conversation Example
+## Prompt Example 1: Meta Conversation
 
 ```text
 When was Meta founded?
@@ -74,7 +74,7 @@ How old is its founder?
 What is their estimated net worth?
 ```
 
-## Barack Obama Speech Example
+## Prompt Example 2: Speech Excerpt
 
 ```text
 Improve the grammar of the following speech excerpt. Explain what has changed and why:
@@ -86,7 +86,7 @@ There’s not a liberal America and a conservative America; there’s the United
 Describe the speech excerpt’s sentiment.
 ```
 
-## Three Little Pigs Example
+## Prompt Example 3: The Three Little Pigs
 
 Three Little Pigs story is from [ririro.com](https://ririro.com/the-three-little-pigs).
 
@@ -185,7 +185,37 @@ Sample JSON output from inference:
 }
 ```
 
-## Data Extraction Coding Example
+## Prompt Example 4: Multilingual Geography using System Prompt
+
+```text
+Tell me what languages you are proficient in.
+```
+
+System Role Prompt:
+
+```text
+You are an expert in geography and linguistics. You only respond in the dominant native language of the country or region to which the instruction or question is related.
+```
+
+User Role Prompt:
+
+```text
+What is the tallest peak in Austria?
+```
+
+```text
+What are three famous landmarks in Paris?
+```
+
+### Sample Output
+
+Sample output in French:
+
+```text
+C'est une ville magnifique ! Trois monuments célèbres à Paris sont : la Tour Eiffel, le Louvre et Notre-Dame de Paris.
+```
+
+## Example 5a: Data Extraction Coding
 
 ```text
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
@@ -224,11 +254,11 @@ Sample output from Python script:
 ['Aimee', 'Alejandro', 'Alexandria', 'Alison', 'Anita', 'Brady', 'Brett', 'Brittany', 'Bruce', 'Bryan', 'Candice', 'Carl', 'Caroline', 'Cassidy', 'Chad', 'Chloe', 'Clarence', 'Clifford', 'Colleen', 'Collin', 'Corey', 'Dakota', 'Danny', 'Darrell', 'Darren', 'Debra', 'Duane', 'Eddie', 'Eileen', 'Emma', 'Faith', 'Fernando', 'Fred', 'Frederick', 'Gabriel', 'Geoffrey', 'Gerald', 'Gloria', 'Greg', 'Hunter', 'Jack', 'Janet', 'Jenna', 'Joanna', 'Joanne', 'Jordan', 'Kaitlyn', 'Karl', 'Kathleen', 'Kathy', 'Kelli', 'Kent', 'Kiara', 'Kristine', 'Latoya', 'Laurie', 'Leslie', 'Linda', 'Lori', 'Luis', 'Lynn', 'Makayla', 'Marcus', 'Maxwell', 'Michelle', 'Miranda', 'Natalie', 'Nicholas', 'Nina', 'Patricia', 'Phyllis', 'Preston', 'Ralph', 'Regina', 'Rhonda', 'Richard', 'Riley', 'Robin', 'Roy', 'Samuel', 'Shane', 'Shelley', 'Sherry', 'Sheryl', 'Stacie', 'Stefanie', 'Tammie', 'Tom', 'Tracey', 'Vernon', 'Virginia', 'Wayne', 'Yvonne']
 ```
 
-## Data Extraction Coding Example using System Prompt
+## Example 5b: Data Extraction Coding using System Prompt
 
 ### First Prompt
 
-System:
+System Role Prompt:
 
 ```text
 You are an expert programmer who writes Python 3 code in a Pythonic style. Pythonic refers to an approach to Python programming that embraces the idioms and practices considered natural or idiomatic in the Python programming language. It embodies the philosophy and best practices that lead to clear, concise, and readable code. Pythonic code is also performant, resilient, efficiently catches specific exceptions, and uses the latest Python 3 features.
@@ -236,7 +266,7 @@ You are an expert programmer who writes Python 3 code in a Pythonic style. Pytho
 Important: You should always optimize code for performance over the use of convenience libraries and use Python functions to separate functional concerns, including a main() function.
 ```
 
-User:
+User Role Prompt:
 
 ```text
 Write a Python 3 script to extract all values from the 'First Name' column of a CSV file as a Python list of dictionary objects containing the values as strings ('names'), sorted in ascending order, along with the count of each unique value ('count'). Do not repeat any values. Require a command-line argument for the 'path' to CSV file. Output the results as Name: {name}, Count: {count}, sorted in descending order by counts and secondarily, in ascending order by name. Explain your decisions. Below is a sample of that CSV file's header row:
@@ -246,7 +276,7 @@ Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Emai
 
 ### Second Prompt
 
-User:
+User Role Prompt:
 
 ```text
 Refactor the code to Pythonic using PEP8 while also optimizing for performance. Keep all my previous instructions in mind. Explain your decisions.
