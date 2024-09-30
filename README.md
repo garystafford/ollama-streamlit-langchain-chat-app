@@ -275,7 +275,7 @@ Index,Customer Id,First Name,Last Name,Company,City,Country,Phone 1,Phone 2,Emai
 User Role Prompt:
 
 ```text
-Refactor the code to Pythonic using PEP8 while also optimizing for performance. Keep all my previous instructions in mind. Explain your decisions.
+Refactor the code to Pythonic using PEP 8 while also optimizing for performance. Keep all my previous instructions in mind. Explain your decisions.
 ```
 
 ### Sample Output
