@@ -64,6 +64,14 @@ deactivate
 
 temperature: 0.50
 
+System Role Prompt (default):
+
+```text
+You are a friendly and informative AI chatbot conversing with a human.
+```
+
+User Role Prompts:
+
 ```text
 When was Meta founded?
 ```
@@ -80,8 +88,16 @@ What is their estimated net worth?
 
 temperature: 0.50
 
+System Role Prompt (default):
+
 ```text
-Improve the grammar of the following speech excerpt. Explain what has changed and why:
+You are a friendly and informative AI chatbot conversing with a human.
+```
+
+User Role Prompts:
+
+```text
+Improve the grammar of the following speech excerpt. Preserve the original tone and sentiment. Explain what has changed and why:
 
 There’s not a liberal America and a conservative America; there’s the United States of America. There’s not a Black America and white America and Latino America and Asian America; there’s the United States of America. We are one people, all of us pledging allegiance to the stars and stripes, all of us defending the United States of America. In the end, that’s what this election is about. Do we participate in a politics of cynicism, or do we participate in a politics of hope?
 ```
@@ -94,7 +110,15 @@ Describe the speech excerpt’s sentiment.
 
 Three Little Pigs story is from [ririro.com](https://ririro.com/the-three-little-pigs).
 
-temperature: 0.20
+temperature: 0.50
+
+System Role Prompt (default):
+
+```text
+You are a friendly and informative AI chatbot conversing with a human.
+```
+
+User Role Prompt:
 
 ```text
 Analyze the following children’s story. Identify all the characters and their corresponding character types from the list below. Explain why you have chosen a particular character type. Output the characters and their corresponding character types in JSON format, which adheres to the following structure:
@@ -185,7 +209,7 @@ What about the three men in the story?
 ```
 
 ```text
-Format the JSON with markdown tags for code.
+Format the JSON with markdown tags for code. Sort by character name.
 ```
 
 ### Output
@@ -196,36 +220,32 @@ Sample JSON output from inference:
 {
   "characters": [
     {
-      "character": "Old Mother Pig",
-      "character_type": "Protagonist"
-    },
-    {
-      "character": "First Little Pig",
-      "character_type": "Deuteragonist"
-    },
-    {
-      "character": "Second Little Pig",
-      "character_type": "Deuteragonist"
-    },
-    {
-      "character": "Third Little Pig",
-      "character_type": "Protagonist"
-    },
-    {
-      "character": "Man with Straw",
-      "character_type": "Henchmen"
-    },
-    {
-      "character": "Man with Sticks",
-      "character_type": "Henchmen"
-    },
-    {
-      "character": "Man with Bricks",
-      "character_type": "Henchmen"
-    },
-    {
-      "character": "Big Bad Wolf",
+      "character": "The Big Bad Wolf",
       "character_type": "Antagonist"
+    },
+    {
+      "character": "The First Little Pig",
+      "character_type": "Deuteragonist"
+    },
+    {
+      "character": "The Second Little Pig",
+      "character_type": "Deuteragonist"
+    },
+    {
+      "character": "The Third Little Pig",
+      "character_type": "Protagonist"
+    },
+    {
+      "character": "The Man with a Bundle of Bricks",
+      "character_type": "Contagonist"
+    },
+    {
+      "character": "The Man with a Bundle of Sticks",
+      "character_type": "Contagonist"
+    },
+    {
+      "character": "The Man with a Bundle of Straw",
+      "character_type": "Contagonist"
     }
   ]
 }
@@ -275,6 +295,16 @@ C'est une ville magnifique ! Trois monuments célèbres à Paris sont : la Tour 
 
 temperature: 0.50
 
+### First Prompt
+
+System Role Prompt (default):
+
+```text
+You are a friendly and informative AI chatbot conversing with a human.
+```
+
+User Role Prompt:
+
 ```text
 Write a Python script to extract all values from the 'First Name' column as a list of strings, sorted in ascending order.
 Do not repeat any values. The data is in a file called 'data/customers-100000.csv'. Below is a sample of that CSV file's header row:
@@ -287,24 +317,42 @@ Sample Python script from inference:
 ```python
 import pandas as pd
 
-def extract_first_names(csv_file):
-    # Read the CSV file into a DataFrame
-    df = pd.read_csv(csv_file)
+def extract_first_names(file_path):
+    try:
+        # Read the CSV file
+        df = pd.read_csv(file_path)
 
-    # Extract the 'First Name' column
-    first_names = df['First Name'].tolist()
+        # Extract unique values from the 'First Name' column
+        first_names = df['First Name'].unique()
 
-    # Remove duplicates and sort the values in ascending order
-    unique_first_names = sorted(set(first_names))
+        # Sort the list in ascending order
+        sorted_first_names = sorted(first_names)
 
-    return unique_first_names
+        return sorted_first_names
 
-# Call the function with the CSV file name
-first_names = extract_first_names('customers-100.csv')
-print(first_names)
+    except FileNotFoundError:
+        print("The file does not exist.")
+        return None
+    except pd.errors.EmptyDataError:
+        print("The file is empty.")
+        return None
+    except pd.errors.ParserError as e:
+        print(f"An error occurred while parsing the file: {e}")
+        return None
+
+# Usage:
+file_path = 'data/customers-100000.csv'
+first_names = extract_first_names(file_path)
+
+if first_names is not None:
+    print(first_names)
 ```
 
-### Sample Output
+You will need to install `pandas`: `python3 -m pip install pandas`.
+
+Command to run the generated and refactored Python script: `time python3 ./refactored_code.py`
+
+### Sample Code Output
 
 Sample output from Python script:
 
@@ -342,9 +390,9 @@ User Role Prompt:
 Refactor the code to adhere to PEP 8 guidelines and optimize it for performance, taking into account any existing constraints or requirements.
 ```
 
-### Sample Output
+### Sample Code Output
 
-Command to run the generated and refactored Python script: `python3 ./refactored_code.py data/customers-100000.csv`
+Command to run the generated and refactored Python script: `time python3 ./refactored_code.py data/customers-100000.csv`
 
 Sample output from the generated and refactored Python script:
 
