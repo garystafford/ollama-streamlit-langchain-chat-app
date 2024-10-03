@@ -219,9 +219,7 @@ def setup_page_config() -> None:
     st.markdown("##### Chat")
 
 
-def handle_user_input(
-    chain_with_history: RunnableWithMessageHistory, msgs: StreamlitChatMessageHistory
-) -> None:
+def handle_user_input(chain_with_history: RunnableWithMessageHistory) -> None:
     """
     Handle user input and generate AI response.
 
@@ -230,7 +228,6 @@ def handle_user_input(
 
     Args:
         chain_with_history (RunnableWithMessageHistory): The chat chain with history management.
-        msgs (StreamlitChatMessageHistory): The chat message history object.
     """
     if prompt := st.chat_input("Type your message here..."):
         st.chat_message("human").write(prompt)
@@ -265,7 +262,7 @@ def main() -> None:
 
     chain_with_history = RunnableWithMessageHistory(
         chain,
-        lambda session_id: msgs,
+        lambda _: msgs,
         input_messages_key="input",
         history_messages_key="chat_history",
     )
@@ -273,7 +270,7 @@ def main() -> None:
     for msg in msgs.messages:
         st.chat_message(msg.type).write(msg.content)
 
-    handle_user_input(chain_with_history, msgs)
+    handle_user_input(chain_with_history)
 
     if st.button("Clear Chat History"):
         msgs.clear()

@@ -212,6 +212,10 @@ What about the three men in the story?
 Format the JSON with markdown tags for code. Sort by character name.
 ```
 
+```text
+Add the pig's mom.
+```
+
 ### Output
 
 Sample JSON output from inference:
